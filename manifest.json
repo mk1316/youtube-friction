@@ -1,12 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "YouTube Grayscale",
+  "name": "YouTube Friction",
   "version": "1.0",
-  "description": "Makes YouTube entirely grayscale",
+  "description": "Adds friction to YouTube by making it grayscale and requiring a number guess to access",
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
       "css": ["youtube-grayscale.css"],
+      "js": ["friction.js"],
       "run_at": "document_start"
     }
   ]
