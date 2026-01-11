@@ -1,10 +1,13 @@
 # YouTube Friction
 
-A Firefox extension that adds friction to YouTube. Makes it grayscale and requires you to guess a number between 1-10 before accessing the site. Wrong guesses have a 15 second cooldown.
+A Firefox extension that adds friction to YouTube to reduce mindless browsing.
+
+- Grayscale filter
+- Number guessing challenge (1-10) to unlock
+- 3 unlocks per day: 15min, 10min, 5min
 
 ## Installation
 
-1. Open Firefox and go to `about:debugging`
-2. Click "This Firefox" in the left sidebar
-3. Click "Load Temporary Add-on..."
-4. Select the `manifest.json` file from this directory
+1. Go to `about:debugging` > "This Firefox"
+2. Click "Load Temporary Add-on..."
+3. Select `manifest.json`
