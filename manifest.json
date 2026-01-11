@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "YouTube Grayscale",
+  "version": "1.0",
+  "description": "Makes YouTube entirely grayscale",
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "css": ["youtube-grayscale.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
