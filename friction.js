@@ -1,4 +1,11 @@
 (function() {
+  const UNLOCK_DURATION = 15 * 60 * 1000;
+  const unlockUntil = localStorage.getItem('friction-unlock');
+
+  if (unlockUntil && Date.now() < parseInt(unlockUntil)) {
+    return;
+  }
+
   const targetNumber = Math.floor(Math.random() * 10) + 1;
   let canGuess = true;
 
@@ -40,6 +47,7 @@
     if (e.key !== 'Enter' || !canGuess) return;
     const guess = parseInt(input.value);
     if (guess === targetNumber) {
+      localStorage.setItem('friction-unlock', Date.now() + UNLOCK_DURATION);
       overlay.remove();
     } else {
       input.value = '';
