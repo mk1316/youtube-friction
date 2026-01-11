@@ -1,10 +1,26 @@
 (function() {
   const UNLOCK_DURATIONS = [15 * 60 * 1000, 10 * 60 * 1000, 5 * 60 * 1000];
-  const unlockUntil = localStorage.getItem('friction-unlock');
-  const unlockCount = parseInt(localStorage.getItem('friction-count') || '0');
+  const today = new Date().toDateString();
+  const storedDate = localStorage.getItem('friction-date');
 
+  let unlockCount = parseInt(localStorage.getItem('friction-count') || '0');
+  if (storedDate !== today) {
+    unlockCount = 0;
+    localStorage.setItem('friction-count', '0');
+    localStorage.setItem('friction-date', today);
+  }
+
+  const unlockUntil = localStorage.getItem('friction-unlock');
   if (unlockUntil && Date.now() < parseInt(unlockUntil)) {
     showTimer(parseInt(unlockUntil));
+    return;
+  }
+
+  if (unlockCount >= 3) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:2147483647;display:flex;align-items:center;justify-content:center;color:#888;font-family:sans-serif;';
+    overlay.textContent = 'No unlocks remaining today';
+    document.documentElement.appendChild(overlay);
     return;
   }
 
